@@ -1,5 +1,5 @@
-# React DockerFile v1.0.0
-FROM node:18
+# React DockerFile v1.0.1
+FROM node:18 AS builder
 # 컨테이너 내부 작업 경로 설정
 WORKDIR /usr/src/app
 # 컨테이너 내부로 package.json 파일을 복사
