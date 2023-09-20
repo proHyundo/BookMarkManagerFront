@@ -13,7 +13,7 @@ RUN npm run build
 
 # nginx DockerFile
 FROM nginx:latest
-COPY /home/ubuntu/front/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 EXPOSE 5173
 CMD ["nginx", "-g", "daemon off;"]
