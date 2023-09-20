@@ -44,7 +44,11 @@ const Login = () => {
   const { classes } = useStyles();
   const openKakaoLogin = () => {
     let url = import.meta.env.VITE_KAKAO_LOGIN_URL;
-    window.open(url, "_blank", "width=400, height=600, top=100, left=100, resizable=yes,scrollbars=yes");
+    window.open(
+      url,
+      "_blank",
+      "width=400, height=600, top=100, left=100, resizable=yes,scrollbars=yes"
+    );
   };
 
   return (
@@ -80,7 +84,7 @@ const Login = () => {
             Register
           </Anchor>
         </Text>
-        
+
         <div onClick={openKakaoLogin}>
           <img
             src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
@@ -89,6 +93,25 @@ const Login = () => {
           />
         </div>
       </Paper>
+      <button
+        onClick={() => {
+          fetch(import.meta.env.VITE_APP_SERVER + "/api/test/developer/whoami/port", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": import.meta.env.VITE_APP_SERVER,
+            },
+            baseURL: import.meta.env.VITE_APP_SERVER,
+            withCredentials: true,
+            sameSite: "none",
+            credentials: "include",
+          }).then((res) => {
+            console.log(res);
+          });
+        }}
+      >
+        Fetch 통신 테스트
+      </button>
     </div>
   );
 };
@@ -98,7 +121,7 @@ export default Login;
 export async function action(data) {
   const formData = await data.request.formData();
   const postData = Object.fromEntries(formData);
-  const response = await fetch("http://localhost:9090/api/v1/user/login", {
+  const response = await fetch(import.meta.env.VITE_APP_SERVER + "/api/v1/user/login", {
     method: "POST",
     body: JSON.stringify(postData),
     headers: {

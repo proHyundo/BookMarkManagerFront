@@ -1,71 +1,70 @@
-# name: React CICD with () version 1.2.1
+name: React auto cicd version 1.3.0
 
-# on:
-#   push:
-#     branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
 
-# jobs: 
-#   react-build-and-deploy:
-#     runs-on: ubuntu-latest
+jobs: 
+  react-build-and-deploy:
+    runs-on: ubuntu-latest
     
-#     strategy: 
-#       matrix: 
-#         node-version: [20.3.1] 
+    strategy: 
+      matrix: 
+        node-version: [20.3.1] 
 
-#     steps:
-#       - name: Checkout the repo
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
         
-#       - name: Use Node.js ${{ matrix.node-version }}
-#         uses: actions/setup-node@v1
-#         with: 
-#           node-version: ${{ matrix.node-version }} 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with: 
+          node-version: ${{ matrix.node-version }} 
       
-#       - name: Copy default.conf to VM
-#         uses: appleboy/scp-action@v0.1.4
-#         with:
-#           host: ${{ secrets.VM_HOST_IP }}
-#           username: ${{ secrets.VM_USERNAME }}
-#           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
-#           source: "default.conf"
-#           target: "/home/ubuntu/front/nginx/"
+      - name: Copy default.conf to VM
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VM_HOST_IP }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+          source: "default.conf"
+          target: "/home/ubuntu/front/nginx/"
 
-#       - name: Login to Docker Hub
-#         uses: docker/login-action@v2
-#         with:
-#           username: ${{ secrets.DOCKERHUB_USERNAME }}
-#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-#       - name: Build Web Image And Push
-#         uses: docker/build-push-action@v4
-#         with:
-#           context: .
-#           push: true
-#           tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookmark-web-image:latest
-#           no-cache: true
+      - name: Build Web Image And Push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bookmark-web:latest
+          no-cache: true
 
-#       - name: executing remote ssh commands using password
-#         uses: appleboy/ssh-action@v1.0.0
-#         with:
-#           host: ${{ secrets.VM_HOST_IP }}
-#           username: ${{ secrets.VM_USERNAME }}
-#           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
-#           script: |
-#             # 해당 부분 수정 필요. 모든 컨테이너를 삭제하지 않고, web 컨테이너만 삭제.
-#             # if [ "$(docker ps -q --filter name=web)" ]; then
-#             #   sudo docker rm -f $(docker ps -q --filter name=web)
-#             #   sudo docker rmi $(docker images web -q)
-#             # fi
-#             # sudo docker pull ${{ secrets.DOCKER_REPO }}/bookmark-web-image
-#             # sudo docker compose -f /home/ubuntu/docker-compose.yaml up -d
-#             # docker image prune -a -f
+      # - name: executing remote ssh commands using password
+      #   uses: appleboy/ssh-action@v1.0.0
+      #   with:
+      #     host: ${{ secrets.VM_HOST_IP }}
+      #     username: ${{ secrets.VM_USERNAME }}
+      #     key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+      #     script: |
+      #       if [ "$(docker ps -q --filter name=web)" ]; then
+      #         sudo docker rm -f $(docker ps -q --filter name=web)
+      #         sudo docker rmi $(docker images bookmark-web -q)
+      #       fi
+      #       sudo docker pull ${{ secrets.DOCKER_REPO }}/bookmark-web
+      #       sudo docker compose -f /home/ubuntu/docker-compose.yaml up -d web
+      #       docker image prune -a -f
 
-#       - name: Send Github Actions Result to Slack
-#         uses: 8398a7/action-slack@v3
-#         with:
-#           status: ${{ job.status }}
-#           author_name: Github Action Test
-#           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-#         env:
-#           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-#         if: always()
+      - name: Send Github Actions Result to Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: Github Action Test
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()

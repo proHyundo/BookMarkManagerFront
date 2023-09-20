@@ -18,13 +18,10 @@ const Manage = () => {
 export default Manage;
 
 export async function loader() {
-  // const response = await fetch("http://localhost:9090/api/v1/manage/folders");
-  // const data = await response.json();
-  // return resData.data;
 
   const [foldersResponse, bookmarksResponse] = await Promise.all([
-    fetch("http://localhost:9090/api/v1/manage/folders"),
-    fetch("http://localhost:9090/api/v1/manage/bookmarks"),
+    fetch(import.meta.env.VITE_APP_SERVER + "/api/v1/manage/folders"),
+    fetch(import.meta.env.VITE_APP_SERVER + "/api/v1/manage/bookmarks"),
   ]);
   const [foldersData, bookmarskData] = await Promise.all([
     foldersResponse.json(),

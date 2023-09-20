@@ -2,7 +2,7 @@ import { Form, Link, redirect, useRouteLoaderData } from "react-router-dom";
 
 import { createStyles, Header, Menu, Group, Center, Burger, Container, rem, Image, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-
+import styles from './HeaderMenu.module.css';
 const useStyles = createStyles((theme) => ({
   inner: {
     height: rem(56),
@@ -122,7 +122,7 @@ export function HeaderMenu({ links }) {
 }
 
 export async function action(data) {
-  const response = await fetch("http://localhost:9090/api/v1/user/logout", {
+  const response = await fetch(import.meta.env.VITE_APP_SERVER +"/api/v1/user/logout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
