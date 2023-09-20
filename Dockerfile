@@ -1,4 +1,4 @@
-# React DockerFile v1.0.2
+# React DockerFile v1.0.3
 FROM node:18 AS builder
 # 컨테이너 내부 작업 경로 설정
 WORKDIR /usr/src/app
@@ -15,6 +15,6 @@ RUN npm run build
 # nginx DockerFile
 FROM nginx:latest
 COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 5173
 CMD ["nginx", "-g", "daemon off;"]
