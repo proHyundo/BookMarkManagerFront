@@ -1,31 +1,33 @@
 import { createStyles, Container, Group, Text, Button, Image, rem } from "@mantine/core";
+
+import sytles from "./Home.module.css";
 import image from "/src/assets/home-welcome-banner.jpg";
 import image_github from "/src/assets/image_github.png";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
-    position: 'relative',
-    boxSizing: 'border-box',
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+    position: "relative",
+    boxSizing: "border-box",
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
   },
 
   inner: {
-    position: 'relative',
+    position: "relative",
     paddingTop: rem(120),
     paddingBottom: rem(120),
 
-    [theme.fn.smallerThan('sm')]: {
+    [theme.fn.smallerThan("sm")]: {
       paddingBottom: rem(30),
       paddingTop: rem(30),
     },
   },
 
   image: {
-    maxWidth: '40%',
-    float: 'right',
+    maxWidth: "40%",
+    float: "right",
 
-    [theme.fn.smallerThan('sm')]: {
-      maxWidth: '100%',
+    [theme.fn.smallerThan("sm")]: {
+      maxWidth: "100%",
     },
   },
 
@@ -33,8 +35,8 @@ const useStyles = createStyles((theme) => ({
     width: rem(32),
     marginRight: rem(8),
 
-    [theme.fn.smallerThan('sm')]: {
-      maxWidth: '100%',
+    [theme.fn.smallerThan("sm")]: {
+      maxWidth: "100%",
     },
   },
 
@@ -45,9 +47,9 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.1,
     margin: 0,
     padding: 0,
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
 
-    [theme.fn.smallerThan('sm')]: {
+    [theme.fn.smallerThan("sm")]: {
       fontSize: rem(42),
       lineHeight: 1.2,
     },
@@ -57,7 +59,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.xl,
     fontSize: rem(24),
 
-    [theme.fn.smallerThan('sm')]: {
+    [theme.fn.smallerThan("sm")]: {
       fontSize: rem(18),
     },
   },
@@ -65,7 +67,7 @@ const useStyles = createStyles((theme) => ({
   controls: {
     marginTop: `calc(${theme.spacing.xl} * 2)`,
 
-    [theme.fn.smallerThan('sm')]: {
+    [theme.fn.smallerThan("sm")]: {
       marginTop: theme.spacing.xl,
     },
   },
@@ -75,7 +77,7 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: rem(38),
     paddingRight: rem(38),
 
-    [theme.fn.smallerThan('sm')]: {
+    [theme.fn.smallerThan("sm")]: {
       height: rem(54),
       paddingLeft: rem(18),
       paddingRight: rem(18),
@@ -99,8 +101,11 @@ const Home = () => {
         </h1>
 
         <Text className={classes.description} color="dimmed">
-          Build fully functional accessible web applications with ease – Mantine includes more than
-          100 customizable components and hooks to cover you in any situation
+          Welcome to our unique platform, a user-friendly hub designed for intuitive and efficient
+          bookmark management within folders. While we are not a formal operation service, we
+          constantly strive to improve and expand our features, ensuring your experience here is
+          nothing short of remarkable. Join us as we revolutionize the way you organize your digital
+          world!
         </Text>
 
         <Group className={classes.controls}>
@@ -109,24 +114,17 @@ const Home = () => {
             className={classes.control}
             variant="gradient"
             gradient={{ from: "blue", to: "cyan" }}
+            style={{ backgroundImage: "linear-gradient(45deg, #228be6 0%, #15aabf 100%)" }}
           >
             Get started
           </Button>
 
-          <Button
-            component="a"
-            size="xl"
-            variant="default"
-            className={classes.control}
-          >
+          <Button component="a" size="xl" variant="default" className={classes.control}>
             <img src={image_github} className={classes.image_github} />
             GitHub
           </Button>
-
-
         </Group>
       </Container>
-
     </div>
   );
 };

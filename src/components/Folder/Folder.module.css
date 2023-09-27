@@ -1,0 +1,19 @@
+.folder {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.folder:hover {
+    cursor: pointer;
+    background-color: #f6f6f2;
+    border-right: 5px solid var(--color-accent);
+}
+  
+
+.folderChildsContainer{
+    overflow: hidden;
+    /* overflow: scroll; */
+}

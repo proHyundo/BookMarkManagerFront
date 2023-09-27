@@ -1,15 +1,25 @@
+import React, { useRef } from "react";
 import { Form, Link, redirect, useRouteLoaderData } from "react-router-dom";
-
-import { createStyles, Header, Menu, Group, Center, Burger, Container, rem, Image, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import styles from './HeaderMenu.module.css';
+
+import {
+  createStyles,
+  Menu,
+  Group,
+  Center,
+  Burger,
+  Container,
+  rem,
+  Image,
+  Button,
+  Drawer,
+  ScrollArea,
+  Divider,
+} from "@mantine/core";
+import styles from "./HeaderMenu.module.css";
+import image from "/src/assets/BrandLogo.png";
+
 const useStyles = createStyles((theme) => ({
-  inner: {
-    height: rem(56),
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
 
   links: {
     [theme.fn.smallerThan("sm")]: {
@@ -56,24 +66,29 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function HeaderMenu({ links }) {
-  const accessToken = useRouteLoaderData('root');
+  const accessToken = useRouteLoaderData("root");
 
-  const [opened, { toggle }] = useDisclosure(false);
+  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const { classes } = useStyles();
 
   // map 을 열어서 반복적으로 Menu 컴포넌트를 생성.
   const items = links.map((link) => {
     // links 라는 속성이 있으면 Menu 컴포넌트를 links에 담긴 개수만큼 생성.
-    const menuItems = link.links?.map((item) => <Menu.Item key={item.link}>{item.label}</Menu.Item>);
+    const menuItems = link.links?.map((item) => (
+      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+    ));
 
     if (menuItems) {
       return (
         <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
           <Menu.Target>
-            <a href={link.link} className={classes.link} onClick={(event) => event.preventDefault()}>
+            <a
+              href={link.link}
+              className={classes.link}
+              onClick={(event) => event.preventDefault()}
+            >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
-                {/**<IconChevronDown size="0.9rem" stroke={1.5} />*/}
               </Center>
             </a>
           </Menu.Target>
@@ -83,18 +98,25 @@ export function HeaderMenu({ links }) {
     }
 
     return (
-      <a key={link.label} href={link.link} className={classes.link} onClick={(event) => event.preventDefault()}>
+      <a
+        key={link.label}
+        href={link.link}
+        className={classes.link}
+        onClick={(event) => event.preventDefault()}
+      >
         {link.label}
       </a>
     );
   });
 
+  const ref = useRef(links);
+
   return (
-    <Header height={72} mb={80}>
-      <Container>
-        <div className={classes.inner}>
+    <header className={styles.header}>
+      <Container size="lg">
+        <div className={styles.inner}>
           <Link to=".." type="images">
-            <Image maw={150} mr="auto" radius="md" src="/src/assets/BrandLogo.png" alt="Bookmark Share Logo Image" />
+            <Image maw={150} mr="auto" radius="md" src={image} alt="Bookmark Share Logo Image" />
           </Link>
           <Group spacing={5} className={classes.links}>
             <Link to="/manage" className={classes.link}>
@@ -103,7 +125,13 @@ export function HeaderMenu({ links }) {
             {items}
             {accessToken && (
               <Form method="post" action={`/logout`}>
-                <Button type="submit" className={classes.button} variant="light" radius="md" size="xs">
+                <Button
+                  type="submit"
+                  className={classes.button}
+                  variant="light"
+                  radius="md"
+                  size="xs"
+                >
                   Logout
                 </Button>
               </Form>
@@ -114,21 +142,58 @@ export function HeaderMenu({ links }) {
               </Link>
             )}
           </Group>
-          <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+          <Burger
+            opened={drawerOpened}
+            onClick={toggleDrawer}
+            className={classes.burger}
+            size="sm"
+            ref={ref}
+            
+          />
         </div>
       </Container>
-    </Header>
+      <Drawer
+        opened={drawerOpened}
+        onClose={closeDrawer}
+        size="75%"
+        padding="md"
+        title="Menu Drawer"
+        zIndex={1000000}
+        position="right"
+      >
+        <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
+          <Divider my="sm" />
+
+          <a href="#" className={classes.link}>
+            Home
+          </a>
+          <a href="#" className={classes.link}>
+            Manage
+          </a>
+          <a href="#" className={classes.link}>
+            Support
+          </a>
+
+          <Divider my="sm" />
+
+          <Group justify="center" grow pb="xl" px="md">
+            <Button variant="default">Log in</Button>
+            <Button>Sign up</Button>
+          </Group>
+        </ScrollArea>
+      </Drawer>
+    </header>
   );
 }
 
 export async function action(data) {
-  const response = await fetch(import.meta.env.VITE_APP_SERVER +"/api/v1/user/logout", {
+  const response = await fetch(import.meta.env.VITE_APP_SERVER + "/api/v1/user/logout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer " + localStorage.getItem('userAccessToken'),
+      Authorization: "Bearer " + localStorage.getItem("userAccessToken"),
     },
-    credentials: 'include',
+    credentials: "include",
   });
   if (response.status === 200) {
     localStorage.removeItem("userAccessToken");

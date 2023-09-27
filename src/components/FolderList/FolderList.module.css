@@ -1,0 +1,14 @@
+.folderListContainer {
+  /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem; */
+  min-width: 16rem;
+  width: auto;
+  height: auto;
+  min-height: 70vh;
+  font-size: 14px;
+  overflow-y: scroll;
+  /* 스크롤 참고 링크 : https://dawonny.tistory.com/382*/
+  max-height: 80vh;
+}

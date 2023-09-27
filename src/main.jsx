@@ -8,8 +8,9 @@ import RootLayout from "./routes/RootLayout";
 import Home from "./routes/Home";
 import Manage from "./routes/Manage";
 import Login, { action as loginAction } from "./routes/Login";
-import { accessTokenLoader } from "/src/utils/GetAccessToken"
-import { action as logoutAction } from "/src/components/HeaderMenu"
+import { accessTokenLoader } from "/src/utils/GetAccessToken";
+import { loader as folderListLoader } from "/src/routes/Manage";
+import { action as logoutAction } from "/src/components/HeaderMenu/HeaderMenu"
 import KakaoLogin from "./routes/KakaoLogin";
 
 
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login />, action: loginAction },
-      { path: "/manage", element: <Manage /> },
+      { path: "/manage", element: <Manage />, loader: folderListLoader},
       { path: "/logout", action: logoutAction },
       { path: "/login/callback", element: <KakaoLogin />}
     ],

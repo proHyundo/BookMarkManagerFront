@@ -96,7 +96,7 @@ const Login = () => {
       <button
         onClick={() => {
           fetch(import.meta.env.VITE_APP_SERVER + "/api/test/developer/whoami/port", {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               "Access-Control-Allow-Origin": import.meta.env.VITE_APP_SERVER,
@@ -126,9 +126,10 @@ export async function action(data) {
     body: JSON.stringify(postData),
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "http://localhost:9090",
+      "Access-Control-Allow-Origin": "localhost:5173",
+      "Origin": "localhost:5173"
     },
-    baseURL: "http://localhost:9090",
+    baseURL: import.meta.env.VITE_APP_SERVER,
     withCredentials: true,
     sameSite: "none",
     credentials: "include",
