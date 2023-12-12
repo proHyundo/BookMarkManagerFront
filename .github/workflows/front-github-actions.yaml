@@ -3,8 +3,8 @@ name: React auto cicd version 1.4.0 - 23.12.12
 on:
   push:
     branches: [ "main" ]
-  paths:
-    - '.github/workflows/front-github-actions.yaml'
+    paths:
+      - '.github/workflows/front-github-actions.yaml'
 
 jobs: 
   react-build-and-deploy:
