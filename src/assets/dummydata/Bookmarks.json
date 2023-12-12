@@ -1,0 +1,38 @@
+[
+    {
+        "bookmarkSeq": 2,
+        "userId": 1,
+        "folderSeq": 49,
+        "bookmarkTitle": "Bookmark1",
+        "bookmarkCaption": "first book",
+        "bookmarkUrl": "https://www.naver.com",
+        "bookmarkOrder": 1,
+        "bookmarkRegDate": "2023-03-31T15:04:10",
+        "bookmarkModDate": "2023-03-31T15:04:10",
+        "bookmarkDelFlag": "n"
+    },
+    {
+        "bookmarkSeq": 3,
+        "userId": 1,
+        "folderSeq": 49,
+        "bookmarkTitle": "Bookmark2",
+        "bookmarkCaption": "second book",
+        "bookmarkUrl": "https://www.google.com",
+        "bookmarkOrder": 2,
+        "bookmarkRegDate": "2023-03-31T15:04:10",
+        "bookmarkModDate": "2023-03-31T15:04:10",
+        "bookmarkDelFlag": "n"
+    },
+    {
+        "bookmarkSeq": 12,
+        "userId": 1,
+        "folderSeq": 49,
+        "bookmarkTitle": "네이버 test 2023-04-06",
+        "bookmarkCaption": "",
+        "bookmarkUrl": "https://www.naver.com/test/2023-04-06/17:04",
+        "bookmarkOrder": 3,
+        "bookmarkRegDate": "2023-04-06T17:10:46",
+        "bookmarkModDate": "2023-04-06T17:10:46",
+        "bookmarkDelFlag": "n"
+    }
+]

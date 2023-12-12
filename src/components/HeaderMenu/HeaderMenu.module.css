@@ -1,6 +1,6 @@
-.header {
+/* .header {
   height: 5rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 0rem;
   background-color: var(--color-bg);
 }
 
@@ -10,6 +10,8 @@
   justify-content: space-between;
   align-items: center;
 }
+
+-- 여기까지 적용 완료
 
 .link {
   display: block;
@@ -29,4 +31,4 @@
 .linkLabel {
   margin-right: rem(5px);
 }
-
+ */

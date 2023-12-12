@@ -1,0 +1,227 @@
+{
+    "timestamp": "2023-11-02T13:12:04.3315236",
+    "code": 200,
+    "status": "OK",
+    "message": "OK",
+    "data": {
+        "folderSeq": 49,
+        "folderParentSeq": 0,
+        "userId": 1,
+        "folderName": "root",
+        "folderCaption": "this is root folder",
+        "folderOrder": 1,
+        "folderScope": "p",
+        "folderRegDate": "2023-04-04T17:55:10",
+        "folderModDate": "2023-02-23T12:58:55",
+        "includedBookmarks": [
+            {
+                "bookmarkSeq": 2,
+                "userId": 1,
+                "folderSeq": 49,
+                "bookmarkTitle": "Bookmark",
+                "bookmarkCaption": "first book",
+                "bookmarkUrl": "https://www.naver.com",
+                "bookmarkOrder": 1,
+                "bookmarkRegDate": "2023-03-31T15:04:10",
+                "bookmarkModDate": "2023-03-31T15:04:10",
+                "bookmarkDelFlag": "n"
+            },
+            {
+                "bookmarkSeq": 3,
+                "userId": 1,
+                "folderSeq": 49,
+                "bookmarkTitle": "Bookmark",
+                "bookmarkCaption": "second book",
+                "bookmarkUrl": "https://www.google.com",
+                "bookmarkOrder": 2,
+                "bookmarkRegDate": "2023-03-31T15:04:10",
+                "bookmarkModDate": "2023-03-31T15:04:10",
+                "bookmarkDelFlag": "n"
+            },
+            {
+                "bookmarkSeq": 12,
+                "userId": 1,
+                "folderSeq": 49,
+                "bookmarkTitle": "네이버 test 2023-04-06",
+                "bookmarkCaption": "",
+                "bookmarkUrl": "https://www.naver.com/test/2023-04-06/17:04",
+                "bookmarkOrder": 3,
+                "bookmarkRegDate": "2023-04-06T17:10:46",
+                "bookmarkModDate": "2023-04-06T17:10:46",
+                "bookmarkDelFlag": "n"
+            }
+        ],
+        "includedFolders": [
+            {
+                "folderSeq": 1,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "스프링시큐리티",
+                "folderCaption": "first folder",
+                "folderOrder": 1,
+                "folderScope": "p",
+                "folderRegDate": "2023-04-04T17:55:10",
+                "folderModDate": "2023-02-07T13:39:26",
+                "includedBookmarks": [
+                    {
+                        "bookmarkSeq": 4,
+                        "userId": 1,
+                        "folderSeq": 1,
+                        "bookmarkTitle": "Bookmark",
+                        "bookmarkCaption": "공식문서",
+                        "bookmarkUrl": "https://docs.spring.io/spring-security/reference/servlet/architecture.html",
+                        "bookmarkOrder": 1,
+                        "bookmarkRegDate": "2023-03-31T15:04:10",
+                        "bookmarkModDate": "2023-03-31T15:04:10",
+                        "bookmarkDelFlag": "n"
+                    }
+                ],
+                "includedFolders": [
+                    {
+                        "folderSeq": 3,
+                        "folderParentSeq": 1,
+                        "userId": 1,
+                        "folderName": "foldername1",
+                        "folderCaption": "2nd level",
+                        "folderOrder": 1,
+                        "folderScope": "p",
+                        "folderRegDate": "2023-04-04T17:55:10",
+                        "folderModDate": "2023-02-07T13:39:26",
+                        "includedBookmarks": [
+                            {
+                                "bookmarkSeq": 6,
+                                "userId": 1,
+                                "folderSeq": 3,
+                                "bookmarkTitle": "Bookmark",
+                                "bookmarkCaption": "JWT블로그2",
+                                "bookmarkUrl": "https://sas-study.tistory.com/362",
+                                "bookmarkOrder": 3,
+                                "bookmarkRegDate": "2023-03-31T15:04:10",
+                                "bookmarkModDate": "2023-03-31T15:04:10",
+                                "bookmarkDelFlag": "n"
+                            }
+                        ],
+                        "includedFolders": null
+                    }
+                ]
+            },
+            {
+                "folderSeq": 2,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "foldername2",
+                "folderCaption": "second folder",
+                "folderOrder": 2,
+                "folderScope": "p",
+                "folderRegDate": "2023-04-04T17:55:10",
+                "folderModDate": "2023-02-07T13:39:26",
+                "includedBookmarks": [
+                    {
+                        "bookmarkSeq": 5,
+                        "userId": 1,
+                        "folderSeq": 2,
+                        "bookmarkTitle": "Bookmark",
+                        "bookmarkCaption": "JWT블로그1",
+                        "bookmarkUrl": "https://hou27.tistory.com/entry/Spring-Security-JWT",
+                        "bookmarkOrder": 2,
+                        "bookmarkRegDate": "2023-03-31T15:04:10",
+                        "bookmarkModDate": "2023-03-31T15:04:10",
+                        "bookmarkDelFlag": "n"
+                    }
+                ],
+                "includedFolders": null
+            },
+            {
+                "folderSeq": 50,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "기술면접-깃헙레포",
+                "folderCaption": "기술면접 대비 깃허브 저장소 링크들",
+                "folderOrder": 7,
+                "folderScope": "p",
+                "folderRegDate": "2023-06-20T12:37:57",
+                "folderModDate": "2023-06-20T12:37:57",
+                "includedBookmarks": [
+                    {
+                        "bookmarkSeq": 13,
+                        "userId": 1,
+                        "folderSeq": 50,
+                        "bookmarkTitle": "binghe819 깃허브 레포",
+                        "bookmarkCaption": "CS",
+                        "bookmarkUrl": "https://github.com/binghe819/tech-interview",
+                        "bookmarkOrder": null,
+                        "bookmarkRegDate": "2023-06-20T12:43:02",
+                        "bookmarkModDate": "2023-06-20T12:43:02",
+                        "bookmarkDelFlag": "n"
+                    }
+                ],
+                "includedFolders": null
+            },
+            {
+                "folderSeq": 4,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "foldername3",
+                "folderCaption": "third folder",
+                "folderOrder": 3,
+                "folderScope": "p",
+                "folderRegDate": "2023-04-04T17:55:10",
+                "folderModDate": "2023-02-07T13:39:26",
+                "includedBookmarks": [],
+                "includedFolders": null
+            },
+            {
+                "folderSeq": 6,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "test",
+                "folderCaption": "test1",
+                "folderOrder": 4,
+                "folderScope": "p",
+                "folderRegDate": "2023-04-04T17:55:10",
+                "folderModDate": "2023-02-07T13:39:26",
+                "includedBookmarks": [],
+                "includedFolders": null
+            },
+            {
+                "folderSeq": 7,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "postman",
+                "folderCaption": "postman-caption",
+                "folderOrder": 5,
+                "folderScope": "p",
+                "folderRegDate": "2023-04-04T17:55:10",
+                "folderModDate": "2023-02-07T13:39:26",
+                "includedBookmarks": [],
+                "includedFolders": null
+            },
+            {
+                "folderSeq": 8,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "insert",
+                "folderCaption": "insertCaption",
+                "folderOrder": 6,
+                "folderScope": "p",
+                "folderRegDate": "2023-04-04T17:55:10",
+                "folderModDate": "2023-02-07T13:39:26",
+                "includedBookmarks": [],
+                "includedFolders": null
+            },
+            {
+                "folderSeq": 51,
+                "folderParentSeq": 49,
+                "userId": 1,
+                "folderName": "JS 학습 자료",
+                "folderCaption": "JavaScript 관련 학습 자료 링크",
+                "folderOrder": 8,
+                "folderScope": "p",
+                "folderRegDate": "2023-06-20T12:40:00",
+                "folderModDate": "2023-06-20T12:40:00",
+                "includedBookmarks": [],
+                "includedFolders": null
+            }
+        ]
+    }
+}
