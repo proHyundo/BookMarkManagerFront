@@ -56,7 +56,7 @@ jobs:
           script: |
             if [ "$(docker ps -q --filter name=web)" ]; then
               sudo docker rm -f $(docker ps -q --filter name=web)
-              sudo docker rmi $(docker images bookmark-web -q)
+              sudo docker rmi $(docker images -q --filter reference=${{ secrets.DOCKER_REPO }}/bookmark-web)
             fi
             sudo docker pull ${{ secrets.DOCKER_REPO }}/bookmark-web
             sudo docker compose -f /home/ubuntu/docker-compose.yaml up -d web
