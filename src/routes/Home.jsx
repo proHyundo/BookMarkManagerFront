@@ -1,6 +1,5 @@
 import { createStyles, Container, Group, Text, Button, Image, rem } from "@mantine/core";
 
-import sytles from "./Home.module.css";
 import image from "/src/assets/home-welcome-banner.jpg";
 import image_github from "/src/assets/image_github.png";
 

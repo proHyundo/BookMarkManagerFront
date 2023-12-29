@@ -8,6 +8,7 @@ const RootLayout = ({ children }) => {
     const queryClient = new QueryClient();
 
     const links = [
+        { link: "/manage", label: "Manage"},
         {
             link: "#1",
             label: "Others",
@@ -23,7 +24,7 @@ const RootLayout = ({ children }) => {
             label: "Support",
             links: [
                 { link: "/faq", label: "FAQ" },
-                { link: "/contact", label: "Contact to Developer" },
+                { link: "/contact", label: "Contact to Dev" },
             ],
         },
     ];
