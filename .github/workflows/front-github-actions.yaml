@@ -60,7 +60,7 @@ jobs:
             fi
             if [ "$(docker ps -q --filter name=nginx)" ]; then
               sudo docker rm -f $(docker ps -q --filter name=nginx)
-              sudo docker rmi $(docker images -q --filter reference=nginx)
+              sudo docker rmi -f $(docker images -q --filter reference=nginx)
             fi
             sudo docker pull ${{ secrets.DOCKER_REPO }}/bookmark-web
             sudo docker pull nginx
