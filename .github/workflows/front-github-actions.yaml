@@ -58,9 +58,26 @@ jobs:
               sudo docker rm -f $(docker ps -q --filter name=web)
               sudo docker rmi $(docker images -q --filter reference=${{ secrets.DOCKER_REPO }}/bookmark-web)
             fi
+            if [ "$(docker ps -q --filter name=nginx)" ]; then
+              sudo docker rm -f $(docker ps -q --filter name=nginx)
+              sudo docker rmi $(docker images -q --filter reference=nginx)
+            fi
             sudo docker pull ${{ secrets.DOCKER_REPO }}/bookmark-web
-            sudo docker compose -f /home/ubuntu/docker-compose.yaml up -d web
-            docker image prune -a -f
+            sudo docker pull nginx
+            sudo docker compose -f /home/ubuntu/docker-compose.yaml up -d web nginx
+            sudo docker image prune -a -f
+    #     with:
+    #       host: ${{ secrets.VM_HOST_IP }}
+    #       username: ${{ secrets.VM_USERNAME }}
+    #       key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+    #       script: |
+    #         if [ "$(docker ps -q --filter name=web)" ]; then
+    #           sudo docker rm -f $(docker ps -q --filter name=web)
+    #           sudo docker rmi $(docker images -q --filter reference=${{ secrets.DOCKER_REPO }}/bookmark-web)
+    #         fi
+    #         sudo docker pull ${{ secrets.DOCKER_REPO }}/bookmark-web
+    #         sudo docker compose -f /home/ubuntu/docker-compose.yaml up -d web
+    #         docker image prune -a -f
 
       - name: Send Github Actions Result to Slack
         uses: 8398a7/action-slack@v3
